@@ -12,7 +12,9 @@ const orders = require('./routes/order');
 connectDatabase();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://mini-ecommerce-don-t-refer-this-bec-ruddy.vercel.app',
+}));
 app.use('/api/v1/',products);
 app.use('/api/v1/',orders);
 
