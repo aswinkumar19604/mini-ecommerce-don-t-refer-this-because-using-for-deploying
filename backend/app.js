@@ -14,6 +14,8 @@ connectDatabase();
 app.use(express.json());
 app.use(cors({
   origin: 'https://mini-ecommerce-don-t-refer-this-bec-ruddy.vercel.app',
+  methods: ['GET', 'POST','PUT','UPDATE', 'OPTIONS'],
+  credentials: true
 }));
 app.use('/api/v1/',products);
 app.use('/api/v1/',orders);
