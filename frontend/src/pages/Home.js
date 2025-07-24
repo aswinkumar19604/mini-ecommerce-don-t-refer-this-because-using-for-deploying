@@ -7,10 +7,22 @@ export default function Home() {
     const [searchParams, setSearchParams] =  useSearchParams()
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL+'/products?'+searchParams)
-        .then(res => res.json())
-        .then( res => setProducts(res.products))
-    },[searchParams])
+  fetch("https://your-backend.vercel.app/api/v1/products", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "include" // Only if you're using cookies/auth
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Fetched products:", data);
+    })
+    .catch((err) => {
+      console.error("Fetch error:", err);
+    });
+}, []);
+
 
     return <Fragment>
         <h1 id="products_heading">Latest Products</h1>
